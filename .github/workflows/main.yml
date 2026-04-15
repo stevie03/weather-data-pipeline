@@ -28,7 +28,7 @@ jobs:
         run: |
           git config --global user.name 'GitHub Actions Bot'
           git config --global user.email 'actions@github.com'
-          git add idojaras.db
+          git add weather.db
           git commit -m "Automatic data update successful" || echo "No Change"
           git push
        
