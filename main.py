@@ -49,7 +49,7 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS debrecen_weather (
     place TEXT
 )''')
 
-cursor.execute('DELETE FROM debrecen_idojaras')
+cursor.execute('DELETE FROM debrecen_weather')
 
 for entry in clean_data:
     cursor.execute('''INSERT INTO debrecen_weather (time, temperature, humidity, wind_speed, place)
