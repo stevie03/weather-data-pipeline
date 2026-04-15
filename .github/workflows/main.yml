@@ -1,0 +1,40 @@
+name: Daily Weather Pipeline
+
+on:
+  schedule:
+    - cron: 0 6 * * *  
+  workflow_dispatch:
+
+jobs:
+  data_mining:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download code
+        uses: actions/checkout@v4
+
+      - name: Pyton configuration
+        uses: action/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Download packages
+        run: pip install requests
+        
+      - name: Start Pipeline
+        run: python main.py
+
+      - name: Save
+        run: |
+          git config --global user.name 'GitHub Actions Bot'
+          git config --global user.email 'actions@github.com'
+          git add idojaras.db
+          git commit -m "Automatic data update successful" || echo "No Change"
+          git push
+       
+      
+  
+
+
+    
+        
